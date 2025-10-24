@@ -20,5 +20,24 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\Admin\UserController;
 
-Route::resource('posts', PostController::class)->middleware('auth');
+// Public routes
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+
+// Authenticated routes
+Route::middleware('auth')->group(function () {
+    Route::resource('posts', PostController::class)->except(['index', 'show']);
+    
+    // Comments routes
+    Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
+    Route::put('/comments/{comment}', [CommentController::class, 'update'])->name('comments.update');
+    Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+});
+
+// Admin routes
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::resource('users', UserController::class);
+});
