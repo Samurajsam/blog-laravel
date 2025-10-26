@@ -1,4 +1,9 @@
 <x-guest-layout>
+    <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
+        <p class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Rejestracja nowego użytkownika</p>
+        <p>Nowi użytkownicy otrzymują domyślną rolę <span class="font-semibold text-indigo-600 dark:text-indigo-400">'user'</span>. Administrator może później zmienić Twoją rolę w panelu administracyjnym.</p>
+    </div>
+
     <form method="POST" action="{{ route('register') }}">
         @csrf
 

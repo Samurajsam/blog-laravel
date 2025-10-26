@@ -2,6 +2,13 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
+    <!-- Success Message (Registration/Logout) -->
+    @if(session('success'))
+        <div class="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+            <span class="block sm:inline">{{ session('success') }}</span>
+        </div>
+    @endif
+
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
@@ -32,12 +39,19 @@
             </label>
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
+        <div class="flex items-center justify-between mt-4">
+            <div class="flex flex-col gap-2">
+                @if (Route::has('password.request'))
+                    <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
+                        {{ __('Forgot your password?') }}
+                    </a>
+                @endif
+                @if (Route::has('register'))
+                    <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('register') }}">
+                        Nie masz konta? Zarejestruj się
+                    </a>
+                @endif
+            </div>
 
             <x-primary-button class="ms-3">
                 {{ __('Log in') }}
