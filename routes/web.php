@@ -4,8 +4,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
+// Redirect home to posts index
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('posts.index');
 });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
