@@ -13,7 +13,7 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.*')">
-                        Posty
+                        Posts
                     </x-nav-link>
                     @auth
                         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
@@ -21,7 +21,7 @@
                         </x-nav-link>
                         @if(Auth::user()->isAdmin())
                             <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.*')">
-                                Panel Admina
+                                Admin panel
                             </x-nav-link>
                         @endif
                     @endauth
@@ -64,10 +64,10 @@
                 @else
                     <div class="flex gap-4">
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100">
-                            Zaloguj się
+                            Log in
                         </a>
                         <a href="{{ route('register') }}" class="text-sm text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100">
-                            Zarejestruj się
+                            Register
                         </a>
                     </div>
                 @endauth
@@ -89,7 +89,7 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.*')">
-                Posty
+                Posts
             </x-responsive-nav-link>
             @auth
                 <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
@@ -97,7 +97,7 @@
                 </x-responsive-nav-link>
                 @if(Auth::user()->isAdmin())
                     <x-responsive-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.*')">
-                        Panel Admina
+                        Admin panel
                     </x-responsive-nav-link>
                 @endif
             @endauth
@@ -133,10 +133,10 @@
             <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
                 <div class="mt-3 space-y-1">
                     <x-responsive-nav-link :href="route('login')">
-                        Zaloguj się
+                        Log in
                     </x-responsive-nav-link>
                     <x-responsive-nav-link :href="route('register')">
-                        Zarejestruj się
+                        Register
                     </x-responsive-nav-link>
                 </div>
             </div>

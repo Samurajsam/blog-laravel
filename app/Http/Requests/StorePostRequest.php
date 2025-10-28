@@ -33,11 +33,11 @@ class StorePostRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'title.required' => 'Tytuł jest wymagany.',
-            'title.min' => 'Tytuł musi mieć minimum 3 znaki.',
-            'title.max' => 'Tytuł może mieć maksymalnie 255 znaków.',
-            'body.required' => 'Treść posta jest wymagana.',
-            'body.min' => 'Treść musi mieć minimum 10 znaków.',
+            'title.required' => 'Title is required.',
+            'title.min' => 'The title must be at least 3 characters long.',
+            'title.max' => 'The title can be a maximum of 255 characters.',
+            'body.required' => 'Post content is required.',
+            'body.min' => 'Content must be at least 10 characters long.',
         ];
     }
 }

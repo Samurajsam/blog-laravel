@@ -42,6 +42,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect()->route('posts.index')->with('success', 'Zostałeś pomyślnie wylogowany.');
+        return redirect()->route('posts.index')->with('success', 'You have been successfully logged out.');
     }
 }
