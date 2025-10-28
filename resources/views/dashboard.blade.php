@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            Dashboard - Witaj, {{ $user->name }}!
+            Dashboard - Hello, {{ $user->name }}!
         </h2>
     </x-slot>
 
@@ -19,7 +19,7 @@
                                 </svg>
                             </div>
                             <div class="ml-4">
-                                <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Twoje posty</p>
+                                <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Your posts</p>
                                 <p class="text-2xl font-semibold text-gray-900 dark:text-gray-100">{{ $user->posts_count }}</p>
                             </div>
                         </div>
@@ -36,7 +36,7 @@
                                 </svg>
                             </div>
                             <div class="ml-4">
-                                <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Twoje komentarze</p>
+                                <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Your comments</p>
                                 <p class="text-2xl font-semibold text-gray-900 dark:text-gray-100">{{ $user->comments_count }}</p>
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                                 </svg>
                             </div>
                             <div class="ml-4">
-                                <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Rola</p>
+                                <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Role</p>
                                 <p class="text-2xl font-semibold text-gray-900 dark:text-gray-100 capitalize">{{ $user->role }}</p>
                             </div>
                         </div>
@@ -64,16 +64,16 @@
             <!-- Quick Actions -->
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mb-6">
                 <div class="p-6">
-                    <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Szybkie akcje</h3>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Quick actions</h3>
                     <div class="flex flex-wrap gap-3">
                         <a href="{{ route('posts.create') }}" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
                             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                             </svg>
-                            Nowy post
+                            New post
                         </a>
                         <a href="{{ route('posts.index') }}" class="inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
-                            Przeglądaj posty
+                            Browse posts
                         </a>
                         @if($user->isAdmin())
                             <a href="{{ route('admin.users.index') }}" class="inline-flex items-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 focus:bg-red-700 active:bg-red-900 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
@@ -81,7 +81,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                 </svg>
-                                Panel Admina
+                                Admin panel
                             </a>
                         @endif
                     </div>
@@ -92,7 +92,7 @@
                 <!-- Recent Posts -->
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6">
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Twoje ostatnie posty</h3>
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Your latest posts</h3>
                         @forelse($recentPosts as $post)
                             <div class="mb-4 pb-4 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
                                 <a href="{{ route('posts.show', $post) }}" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">
@@ -103,15 +103,15 @@
                                 </p>
                             </div>
                         @empty
-                            <p class="text-gray-600 dark:text-gray-400">Nie masz jeszcze żadnych postów. 
-                                <a href="{{ route('posts.create') }}" class="text-blue-600 dark:text-blue-400 hover:underline">Utwórz pierwszy!</a>
+                            <p class="text-gray-600 dark:text-gray-400">You don't have any posts yet. 
+                                <a href="{{ route('posts.create') }}" class="text-blue-600 dark:text-blue-400 hover:underline">Create first!</a>
                             </p>
                         @endforelse
                         
                         @if($recentPosts->count() > 0)
                             <div class="mt-4">
                                 <a href="{{ route('posts.index') }}" class="text-sm text-blue-600 dark:text-blue-400 hover:underline">
-                                    Zobacz wszystkie posty →
+                                    View all posts →
                                 </a>
                             </div>
                         @endif
@@ -121,7 +121,7 @@
                 <!-- Recent Comments -->
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6">
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Twoje ostatnie komentarze</h3>
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Your latest comments</h3>
                         @forelse($recentComments as $comment)
                             <div class="mb-4 pb-4 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
                                 <p class="text-gray-900 dark:text-gray-100 text-sm mb-1">{{ Str::limit($comment->content, 80) }}</p>
@@ -134,7 +134,7 @@
                                 </p>
                             </div>
                         @empty
-                            <p class="text-gray-600 dark:text-gray-400">Nie dodałeś jeszcze żadnych komentarzy.</p>
+                            <p class="text-gray-600 dark:text-gray-400">You haven't added any comments yet.</p>
                         @endforelse
                     </div>
                 </div>
@@ -143,14 +143,14 @@
             <!-- Account Info -->
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mt-6">
                 <div class="p-6">
-                    <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Informacje o koncie</h3>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Account information</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <p class="text-sm text-gray-600 dark:text-gray-400">Email</p>
                             <p class="text-gray-900 dark:text-gray-100 font-medium">{{ $user->email }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Data rejestracji</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Registration date</p>
                             <p class="text-gray-900 dark:text-gray-100 font-medium">{{ $user->created_at->format('d.m.Y') }}</p>
                         </div>
                     </div>

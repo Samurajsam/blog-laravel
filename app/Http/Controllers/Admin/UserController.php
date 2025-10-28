@@ -38,12 +38,12 @@ class UserController extends Controller
             'password' => 'required|string|min:8|confirmed',
             'role' => 'required|in:user,admin',
         ], [
-            'name.required' => 'Nazwa jest wymagana.',
-            'email.required' => 'Email jest wymagany.',
-            'email.unique' => 'Ten email jest już zajęty.',
-            'password.required' => 'Hasło jest wymagane.',
-            'password.min' => 'Hasło musi mieć minimum 8 znaków.',
-            'password.confirmed' => 'Hasła nie są zgodne.',
+            'name.required' => 'Name is required.',
+            'email.required' => 'Email is required',
+            'email.unique' => 'This email is already taken.',
+            'password.required' => 'Password is required.',
+            'password.min' => 'The password must be at least 8 characters long.',
+            'password.confirmed' => 'The passwords do not match.',
         ]);
 
         User::create([
@@ -53,7 +53,7 @@ class UserController extends Controller
             'role' => $validated['role'],
         ]);
 
-        return redirect()->route('admin.users.index')->with('success', 'Użytkownik został utworzony!');
+        return redirect()->route('admin.users.index')->with('success', 'The user has been created!');
     }
 
     /**
@@ -75,11 +75,11 @@ class UserController extends Controller
             'role' => 'required|in:user,admin',
             'password' => 'nullable|string|min:8|confirmed',
         ], [
-            'name.required' => 'Nazwa jest wymagana.',
-            'email.required' => 'Email jest wymagany.',
-            'email.unique' => 'Ten email jest już zajęty.',
-            'password.min' => 'Hasło musi mieć minimum 8 znaków.',
-            'password.confirmed' => 'Hasła nie są zgodne.',
+            'name.required' => 'Name is required.',
+            'email.required' => 'Email is required',
+            'email.unique' => 'This email is already taken.',
+            'password.min' => 'The password must be at least 8 characters long.',
+            'password.confirmed' => 'The passwords do not match.',
         ]);
 
         $user->name = $validated['name'];
@@ -92,7 +92,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route('admin.users.index')->with('success', 'Użytkownik został zaktualizowany!');
+        return redirect()->route('admin.users.index')->with('success', 'User has been updated!');
     }
 
     /**
@@ -101,11 +101,11 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         if ($user->id === auth()->id()) {
-            return redirect()->route('admin.users.index')->with('error', 'Nie możesz usunąć swojego konta!');
+            return redirect()->route('admin.users.index')->with('error', 'You cannot delete your account!');
         }
 
         $user->delete();
 
-        return redirect()->route('admin.users.index')->with('success', 'Użytkownik został usunięty!');
+        return redirect()->route('admin.users.index')->with('success', 'The user has been deleted!');
     }
 }

@@ -33,11 +33,11 @@ class StoreCommentRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'content.required' => 'Treść komentarza jest wymagana.',
-            'content.min' => 'Komentarz musi mieć minimum 3 znaki.',
-            'content.max' => 'Komentarz może mieć maksymalnie 1000 znaków.',
-            'post_id.required' => 'ID posta jest wymagane.',
-            'post_id.exists' => 'Wybrany post nie istnieje.',
+            'content.required' => 'Comment content is required.',
+            'content.min' => 'Comments must be at least 3 characters long.',
+            'content.max' => 'Comments can be up to 1000 characters long.',
+            'post_id.required' => 'Post ID is required.',
+            'post_id.exists' => 'The selected post does not exist.',
         ];
     }
 }
