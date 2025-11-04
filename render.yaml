@@ -20,26 +20,26 @@ services:
       - key: APP_KEY
         generateValue: true
       - key: DB_CONNECTION
-        value: mysql
+        value: pgsql
       - key: DB_HOST
         fromDatabase:
-          name: blog-mysql
+          name: blog-postgres
           property: host
       - key: DB_PORT
         fromDatabase:
-          name: blog-mysql
+          name: blog-postgres
           property: port
       - key: DB_DATABASE
         fromDatabase:
-          name: blog-mysql
+          name: blog-postgres
           property: database
       - key: DB_USERNAME
         fromDatabase:
-          name: blog-mysql
+          name: blog-postgres
           property: user
       - key: DB_PASSWORD
         fromDatabase:
-          name: blog-mysql
+          name: blog-postgres
           property: password
       - key: SESSION_DRIVER
         value: database
@@ -49,6 +49,6 @@ services:
         value: database
 
 databases:
-  - name: blog-mysql
+  - name: blog-postgres
     databaseName: blog_laravel
     user: blog_user
