@@ -54,6 +54,9 @@ WORKDIR /var/www/html
 # Copy application source
 COPY . ./
 
+# Ensure Vite dev server marker is absent in production
+RUN rm -f public/hot
+
 # Install PHP and Node dependencies and build assets
 RUN composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist \
     && npm ci \
