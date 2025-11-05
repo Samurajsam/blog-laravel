@@ -59,7 +59,7 @@ RUN rm -f public/hot
 
 # Install PHP and Node dependencies and build assets
 RUN composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist \
-    && npm ci \
+    && npm ci --include=dev \
     && npm run build \
     && npm cache clean --force
 
